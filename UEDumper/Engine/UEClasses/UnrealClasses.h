@@ -123,6 +123,8 @@ class UField : public UObject {
 public:
 	using UObject::UObject;
 
+	uint64_t pad[1]; // Back4Blood
+
 	/** Next Field in the linked list */
 	UField* Next;
 
@@ -186,7 +188,7 @@ public:
  */
 class UStruct : public UField
 {
-	uint64_t pad[1]; // Back4Blood
+	//uint64_t pad[1]; // Back4Blood
 
 public:
 	using UField::UField;

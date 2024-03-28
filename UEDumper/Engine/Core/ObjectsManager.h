@@ -357,10 +357,6 @@ public:
 
 			//get the uobject for i
 			auto obj = getUObjectByIndex<T>(i);
-			if (obj == nullptr) {
-				// Object is marked as invalid
-				continue;
-			}
 
 			if (CRITICAL_STOP_CALLED())
 				return nullptr;
@@ -387,6 +383,7 @@ public:
 		}
 		windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_WARNING, "OBJECTSMANAGER",
 			"ERROR? Could not find name %s in FindObject!!", name.c_str());
+		printf("ERROR? Could not find name %s in FindObject!!\n", name.c_str());
 		if(raiseHardError)
 		{
 			errorReason = windows::LogWindow::getLastLogMessage();
