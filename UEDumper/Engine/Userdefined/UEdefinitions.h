@@ -129,7 +129,7 @@
 #define UE_BLUEPRINT_EVENTGRAPH_FASTCALLS TRUE
 
 //only exists for UE version 5.0 and above
-#if UE_VERSION >= UE_5_00
+#if UE_VERSION >= UE_4_25
 //UECOMMENT: Make sure that live coding define is available. Normally this is supplied by UBT
 //default FALSE but in case function offsets are 0 set this to true
 #define WITH_LIVE_CODING FALSE
@@ -151,8 +151,8 @@
 #endif
 
 // If your game uses XOR encrypted GObjects, add the XOR key here (e.g. 0x8375 for Back4Blood)
-#define GOBJECTS_XOR_ECRYPTION_KEY 0x0
+#define GOBJECTS_XOR_ECRYPTION_KEY 0x8375
 
 // Define this as 0x8 for example, if using GOBJECTS_XOR_ECRYPTION_KEY on Back4Blood
 // This is used when a chunk using XOR encryption has a nullptr at the start and needs padding
-#define CHUNK_PADDING 0x0
+#define CHUNK_PADDING 0x8

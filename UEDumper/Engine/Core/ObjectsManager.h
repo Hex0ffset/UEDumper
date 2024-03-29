@@ -68,10 +68,6 @@ public:
 	//-> https://github.com/EpicGames/UnrealEngine/blob/4.21/Engine/Source/Runtime/CoreUObject/Public/UObject/UObjectArray.h#L960
 	struct FChunkedFixedUObjectArray
 	{
-		/** Master table to chunks of pointers **/
-		FUObjectItem** Objects;
-		/** If requested, a contiguous memory where all objects are allocated **/
-		FUObjectItem* PreAllocatedObjects;
 		/** Maximum number of elements **/
 		int32_t MaxElements;
 		/** Number of elements we currently have **/
@@ -80,6 +76,10 @@ public:
 		int32_t MaxChunks;
 		/** Number of chunks we currently have **/
 		int32_t NumChunks;
+		/** Master table to chunks of pointers **/
+		FUObjectItem** Objects;
+		/** If requested, a contiguous memory where all objects are allocated **/
+		FUObjectItem* PreAllocatedObjects;
 	};
 
 	typedef FChunkedFixedUObjectArray TypeUObjectArray;
