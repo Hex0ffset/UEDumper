@@ -936,20 +936,21 @@ class FField
 public:
 	//again replace vtable ptr with this
 	uint64_t objectptr = 0;
+
 	/** Pointer to the class object representing the type of this FField */
 	FFieldClass* ClassPrivate;
 
 	/** Owner of this field */
 	FFieldVariant Owner;
 
-	/** Next Field in the linked list */
-	FField* Next;
+	/** Object flags */
+	EObjectFlags FlagsPrivate;
 
 	/** Name of this field */
 	FName NamePrivate;
 
-	/** Object flags */
-	EObjectFlags FlagsPrivate;
+	/** Next Field in the linked list */
+	FField* Next;
 
 
 	operator bool() const { return ClassPrivate != nullptr; }
