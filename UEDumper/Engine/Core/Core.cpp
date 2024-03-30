@@ -353,6 +353,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 			if (member.size == 0)
 			{
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_ONLY_LOG, "CORE", "member %s size is 0! ", member.name.c_str());
+				printf("member %s::%s size is 0!\n", object->getName(), member.name.c_str());
 				//DebugBreak();
 				continue;
 			}
@@ -698,10 +699,9 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 
 	if (eStruct.inherited)
 	{
-		const auto& inherStruct = eStruct.supers[0];
-		if (inherStruct->maxSize < eStruct.definedMembers[0].offset)
+		if (eStruct.inheretedSize < eStruct.definedMembers[0].offset)
 		{
-			genUnknownMember(inherStruct->maxSize, eStruct.definedMembers[0].offset, 3);
+			genUnknownMember(eStruct.inheretedSize, eStruct.definedMembers[0].offset, 3);
 		}
 
 	}
