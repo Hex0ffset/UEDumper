@@ -347,6 +347,12 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	{
 		for (auto child = object->getChildProperties(); child; child = child->getNext())
 		{
+			if (object->getFullName() == "/Script/Engine.World" && child->getName() == "OwningGameInstance" && child->getOffset() != 0xA8) {
+				printf("Object with OwningGameInstance: %s\n", object->getFullName().c_str());
+				// offset of one of the two hits should be 0xA8 (168)
+				DebugBreak();
+			}
+
 			EngineStructs::Member member;
 			member.size = child->ElementSize * child->ArrayDim;
 			member.name = generateValidVarName(child->getName());
@@ -376,6 +382,7 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 				member.isBit = true;
 				member.bitOffset = bitPos;
 			}
+
 			eStruct.definedMembers.push_back(member);
 		}
 	}
@@ -989,7 +996,7 @@ void EngineCore::generatePackages(int64_t & finishedPackages, int64_t & totalPac
 
 				windows::LogWindow::Log(windows::LogWindow::logLevels::LOGLEVEL_INFO, "CORE",
 					"Generating %s %s::%s", naming, ePackage.packageName.c_str(), object->getCName().c_str());
-				printf("Generating %s %s::%s\n", naming, ePackage.packageName.c_str(), object->getCName().c_str());
+				//printf("Generating %s %s::%s\n", naming, ePackage.packageName.c_str(), object->getCName().c_str());
 
 
 				const auto sObject = object->castTo<UStruct>();

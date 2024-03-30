@@ -844,6 +844,7 @@ fieldType FProperty::getType()
         //    return { true, PropertyType::FieldPathProperty, FFieldPathProperty::typeName(), castTo<FFieldPathProperty>().getSubTypes() };
 
     default:
+        printf("Unknown property type for object class ID %d (%s)\n", objectClass->Id, getName().c_str());
         return { false, PropertyType::Unknown, getName() };
     }
 }

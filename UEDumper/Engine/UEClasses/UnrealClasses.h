@@ -974,13 +974,13 @@ public:
 	using FField::FField;
 
 	// Persistent variables.
-	FName            RepNotifyFunc;
-	int32_t         ArrayDim;
+	EPropertyFlags  PropertyFlags;
 	int32_t         ElementSize;
+	int32_t         ArrayDim;
 	uint16_t        RepIndex;
 	uint8_t         BlueprintReplicationCondition;
 	int32_t         Offset;
-	EPropertyFlags  PropertyFlags;
+	FName            RepNotifyFunc;
 
 	// from here on down looks correct
 
