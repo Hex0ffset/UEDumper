@@ -15,8 +15,8 @@ bool windows::HelloWindow::render()
 {
 	if (alreadyCompleted) return true;
 
-	static char processName[100] = { 0 };
-	static char projectName[50] = { 0 };
+	static char processName[100] = "Back4Blood.exe";
+	static char projectName[50] = "Back4Blood";
 	static char errorText[100] = { 0 };
 	static bool showEngineInfos = false;
 	static bool createdDir = false;

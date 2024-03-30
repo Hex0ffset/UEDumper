@@ -974,15 +974,15 @@ public:
 	using FField::FField;
 
 	// Persistent variables.
-	int32_t			ArrayDim;
-	int32_t			ElementSize;
-	EPropertyFlags	PropertyFlags;
-	uint16_t		RepIndex;
+	FName            RepNotifyFunc;
+	int32_t         ArrayDim;
+	int32_t         ElementSize;
+	uint16_t        RepIndex;
+	uint8_t         BlueprintReplicationCondition;
+	int32_t         Offset;
+	EPropertyFlags  PropertyFlags;
 
-	uint8_t			BlueprintReplicationCondition;
-	int32_t			Offset;
-
-	FName			RepNotifyFunc;
+	// from here on down looks correct
 
 	/** In memory only: Linked list of properties from most-derived to base **/
 	FProperty* PropertyLinkNext;
