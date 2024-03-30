@@ -347,12 +347,6 @@ bool EngineCore::generateStructOrClass(UStruct* object, std::vector<EngineStruct
 	{
 		for (auto child = object->getChildProperties(); child; child = child->getNext())
 		{
-			if (object->getFullName() == "/Script/Engine.World" && child->getName() == "OwningGameInstance" && child->getOffset() != 0xA8) {
-				printf("Object with OwningGameInstance: %s\n", object->getFullName().c_str());
-				// offset of one of the two hits should be 0xA8 (168)
-				DebugBreak();
-			}
-
 			EngineStructs::Member member;
 			member.size = child->ElementSize * child->ArrayDim;
 			member.name = generateValidVarName(child->getName());
