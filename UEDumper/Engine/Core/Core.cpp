@@ -702,7 +702,9 @@ void EngineCore::cookMemberArray(EngineStructs::Struct & eStruct)
 	}
 	else if(!eStruct.definedMembers.empty())
 	{
-		genUnknownMember(0, eStruct.definedMembers[0].offset, 7);
+		const auto& firstMember = eStruct.definedMembers[0];
+		if(firstMember.offset != 0)
+			genUnknownMember(0, eStruct.definedMembers[0].offset, 7);
 	}
 
 
