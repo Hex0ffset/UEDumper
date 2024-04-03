@@ -1429,11 +1429,11 @@ void windows::LiveEditor::renderSearchPanel()
 	ImGui::InputTextWithHint("##liveInspectorSearchInput", "GravityScale", searchText, sizeof(searchText));
 
 	auto searchTextString = convertToLowercase(std::string(searchText));
+	performSearch(searchTextString);
+
 	auto findPaths = [&]() {
 		auto& searchResult = searchResults[searchResultPicked];
 		auto& root = tabs[tabPicked].struc;
-
-		performSearch(searchTextString);
 
 		auto paths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
 		if (paths.size() > 0)
