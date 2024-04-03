@@ -1348,6 +1348,7 @@ void windows::LiveEditor::renderLiveEditor()
 	//looks like we have to render a struct
 	if (!bShowRenderSearchView && tabs.size() > 0 && tabPicked < tabs.size() && !bRenderAddInspector)
 	{
+		nodesToExpand.clear();
 		const auto& tab = tabs[tabPicked];
 
 		renderTab(tab);
@@ -1356,7 +1357,6 @@ void windows::LiveEditor::renderLiveEditor()
 	{
 		EditorTab tab = tabPicked >= 0 && tabPicked < tabs.size() ? tabs[tabPicked] : tabs[0];
 
-		visitedNodeCounters.clear();
 		renderTab(tab);
 	}
 	else
@@ -1436,6 +1436,7 @@ void windows::LiveEditor::renderSearchPanel()
 		performSearch(searchTextString);
 
 		auto paths = StrucGraph::getInstance()->findAllPaths(root, NodeAndMember(searchResult, searchResultMember));
+		visitedNodeCounters.clear();
 		if (paths.size() > 0)
 		{
 			nodesToExpand.clear();
