@@ -1337,7 +1337,7 @@ void windows::LiveEditor::renderLiveEditor()
 				sprintf_s(addressBuf, "0x%llX", address);
 
 				//render it!
-				renderStruct(tab.struc, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf)); //secret is a Address, so 0x3cFFFF
+				renderStruct(tab.struc, address, tab.name, tab.name + std::to_string(tab.address), tab.origin + std::string(addressBuf), 0); //secret is a Address, so 0x3cFFFF
 			}
 			//we have to wait for the blocks initialization
 			else
@@ -1498,6 +1498,9 @@ void windows::LiveEditor::renderSearchResults()
 				{
 					std::string buf = tabs[tabPicked].struc->cppName;
 					int depth = 0;
+#ifdef _DEBUG
+					assert(path[0].first == root);
+#endif
 					for (auto node : path) {
 						buf += " -> " + node.second;
 						if (popLast && node == path[path.size() - 1]) break;
@@ -1710,4 +1713,12 @@ void windows::LiveEditor::populateStrucGraph(EngineStructs::Struct* struc, Engin
 			}
 		}
 	}
+}
+
+static std::string windows::LiveEditor::convertToLowercase(const std::string& str)
+{
+	std::string result = "";
+	for (char ch : str) result += tolower(ch);
+
+	return result;
 }

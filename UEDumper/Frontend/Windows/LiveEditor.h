@@ -210,12 +210,6 @@ namespace windows
 		 */
 		static void topmostCallback();
 
-		static std::string convertToLowercase(const std::string& str)
-		{
-			std::string result = "";
-			for (char ch : str) result += tolower(ch);
-
-			return result;
-		}
+		static std::string convertToLowercase(const std::string& str);
 	};
 }
